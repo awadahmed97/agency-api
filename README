@@ -1,0 +1,28 @@
+You need to prepare your README file properly including
+Introduction- 
+Here I demonstrate a movie agency database that shows different movies and actors. The api is primarily for Casting Assistant, Casting Directors and Executive Producers
+ 
+Motivation behind the project-
+I wanted to practice my skills in python and show how to create the database tables and how to create endpoints that use CRUD operations on the database tables!
+ 
+Tech Stack used in the project-
+PostgreSQL
+Flask Python
+Heroku
+Auth0
+
+Installation instructions, Installation of the dependencies-
+Pip install -r requirements.txt
+Run python app.py
+
+Testing instructions-
+Run test_app.py to run the test
+
+Roles and the permissions associated with it-
+Casting Assistant
+Casting Director
+Executive Producer
+
+Heroku Link-
+https://agency-api-1.herokuapp.com/
+ 
