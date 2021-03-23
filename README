@@ -18,9 +18,28 @@ Testing instructions-
 Run test_app.py to run the test
 
 Roles and the permissions associated with it-
-Casting Assistant
-Casting Director
-Executive Producer
+
+Casting Assistant-
+
+-Permissions:
+get:movies
+get:actors
+
+Casting Director-
+
+-Permissions:
+Casting Assistant Permissions
+post:actors
+delete:actors
+patch:actors
+
+Executive Producer-
+
+-Permissions:
+Casting Director Permissions
+post:movies
+delete:movies
+patch:movies
 
 Heroku Link-
 https://agency-api-1.herokuapp.com/
