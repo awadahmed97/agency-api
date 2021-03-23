@@ -9,9 +9,6 @@ from authlib.integrations.flask_client import OAuth
 from six.moves.urllib.parse import urlencode
 import os
 
-#AUTH0_DOMAIN = 'fsndc.us.auth0.com'
-#ALGORITHMS = ['RS256']
-#API_AUDIENCE = 'coffee'
 
 AUTH0_DOMAIN = os.getenv('AUTH0_DOMAIN')
 ALGORITHMS = os.getenv('ALGORITHMS')
@@ -19,6 +16,7 @@ API_AUDIENCE = os.getenv("API_AUDIENCE")
 CLIENT_ID = os.getenv('CLIENT_ID')
 CLIENT_SECRET = os.getenv('CLIENT_SECRET')
 AUTH0_CALLBACK_URL = os.getenv('AUTH0_CALLBACK_URL')
+
 
 def setup_auth0():
     global AUTH0_DOMAIN
@@ -34,14 +32,15 @@ def setup_auth0():
     CLIENT_SECRET = os.getenv('CLIENT_SECRET')
     AUTH0_CALLBACK_URL = os.getenv('AUTH0_CALLBACK_URL')
 
-## AuthError Exception
+# AuthError Exception
+
 
 class AuthError(Exception):
     def __init__(self, error, status_code):
         self.error = error
         self.status_code = status_code
 
-## Auth Header
+# Auth Header
 
 
 def get_token_auth_header():
@@ -93,7 +92,6 @@ def check_permissions(permission, payload):
         return True
 
 
-
 def verify_decode_jwt(token):
     jsonurl = urlopen(f'https://dev-ag123.us.auth0.com/.well-known/jwks.json')
     jwks = json.loads(jsonurl.read())
@@ -118,8 +116,8 @@ def verify_decode_jwt(token):
             payload = jwt.decode(
                 token,
                 rsa_key,
-                algorithms= ALGORITHMS,
-                audience= API_AUDIENCE,
+                algorithms=ALGORITHMS,
+                audience=API_AUDIENCE,
                 issuer='https://' + AUTH0_DOMAIN + '/'
             )
             return payload
@@ -134,7 +132,8 @@ def verify_decode_jwt(token):
             print("entered 7")
             raise AuthError({
                 'code': 'invalid_claims',
-                'description': 'Incorrect claims. Please, check the audience and issuer.'
+                'description':
+                'Incorrect claims. Please, check the audience and issuer.'
             }, 401)
         except Exception:
             raise AuthError({
@@ -146,12 +145,14 @@ def verify_decode_jwt(token):
                 'description': 'Unable to find the appropriate key.'
             }, 400)
 
+
 def validate_token_structure(token):
     parts = token.split('.')
     if(len(parts) != 3):
         raise AuthError({
             'code': 'invalid_header',
-            'description': 'Authorization header must include valid token structure (*.*.*).'
+            'description':
+            'Authorization header must include valid token structure (*.*.*).'
         }, 401)
 
 
