@@ -13,13 +13,16 @@ CORS(app)
 # LOGIN FOR AUTH0
 # ==========================================================================
 
+AUTHORIZE = "authorize?audience"
+
 
 @app.route('/')
 @app.route('/login')
 def login():
     return redirect(
-      "https://{}/authorize?audience={}&response_type=token&client_id={}&redirect_uri={}"
-      .format(AUTH0_DOMAIN, API_AUDIENCE, CLIENT_ID, AUTH0_CALLBACK_URL))
+      "https://{}/{}={}&response_type=token&client_id={}&redirect_uri={}"
+      .format(AUTH0_DOMAIN, AUTHORIZE, API_AUDIENCE, CLIENT_ID,
+              AUTH0_CALLBACK_URL))
 
 
 @app.route('/login-results')
