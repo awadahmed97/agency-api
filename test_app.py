@@ -59,11 +59,11 @@ class Testingmovies(unittest.TestCase):
 
     def test_add_new_actor_with_correct_parameters(self):
         res = self.client().post("/actors",json={
-            'name': "mahmoud sharshar",
-            'age': '22',
+            'name': "awad ahmed",
+            'age': '23',
             'gender': 'male',
             'bio': "nothing!!!!",
-            'birthdate': '1998-5-29'
+            'birthdate': '1997-09-04'
         }, headers = self.authorized_header)
         data = res.get_json()
         self.assertEqual(res.status_code,200)
@@ -74,11 +74,11 @@ class Testingmovies(unittest.TestCase):
 
     def test_add_new_actor_with_incorrect_parameters(self):
         res = self.client().post("/actors",json={
-            'fullname': "mahmoud sharshar",
-            'ae': '22',
+            'fullname': "awad ahmed",
+            'ae': '23',
             'gende': 'male',
             'biograph': "nothing!!!!",
-            'birthdate': '1998-5-29'
+            'birthdate': '1997-09-04'
         }, headers = self.authorized_header)
         data = res.get_json()
         self.assertEqual(res.status_code,401)
