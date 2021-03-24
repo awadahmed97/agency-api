@@ -3,9 +3,7 @@ from flask_cors import CORS
 from flask import Flask, request, abort, jsonify, session, Response, redirect
 from flask_sqlalchemy import SQLAlchemy
 from models import setup_db, Movie, Actor
-from auth import AuthError, requires_auth, setup_auth0, API_AUDIENCE
-from auth import AUTH0_DOMAIN, CLIENT_ID, AUTH0_CALLBACK_URL
-
+from auth import AuthError, requires_auth, setup_auth0
 app = Flask(__name__)
 setup_db(app)
 CORS(app)

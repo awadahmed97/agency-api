@@ -1,4 +1,4 @@
-export DATABASE_URL = 'postgres://pxpzohrdfglajs:462339963a0ce40edd5
+export DATABASE_URL='postgres://pxpzohrdfglajs:462339963a0ce40edd5
 62a0d5581f24e2398a540aacda4e6645d25d302f7697a@ec2-54-164-22-242.compute-1.
 amazonaws.com:5432/d153imoqlgn5g2'
 export AUTH0_DOMAIN='dev-ag123.us.auth0.com'
