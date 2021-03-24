@@ -61,14 +61,12 @@ class Testingmovies(unittest.TestCase):
         res = self.client().post("/actors", json={
             'name': "awad ahmed",
             'age': '23',
-            'gender': 'male',
-            'bio': "nothing!!!!",
-            'birthdate': '1997-09-04'
+            'gender': 'male'
         }, headers=self.authorized_header)
         data = res.get_json()
         self.assertEqual(res.status_code, 200)
         self.assertTrue(data['success'])
-        inserted_actor =Actor.query.filter(Actor.name=='awad ahmed').all()
+        inserted_actor = Actor.query.filter(Actor.name=='awad ahmed').all()
         self.assertIsNotNone(inserted_actor)
         inserted_actor[0].delete()
 
