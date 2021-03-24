@@ -36,7 +36,7 @@ class Testingmovies(unittest.TestCase):
     def test_show_all_movies(self):
         res = self.client().get('/movies', headers=self.authorized_header)
         data = res.get_json()
-        self.assertEqual(res.status_code, 401)
+        self.assertEqual(res.status_code, 200)
 
     def test_add_new_movie_with_incorrect_parameters(self):
         res = self.client().post("/movies", json={
