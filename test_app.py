@@ -49,51 +49,51 @@ class Testingmovies(unittest.TestCase):
         self.assertFalse(data['success'])
 
     def test_update_non_existing_movie(self):
-        res = self.client().patch("/movies/2000000",json={
+        res = self.client().patch("/movies/2000000", json={
             'title': "update test",
             'period': '3h23m'
-        },headers= self.authorized_header)
+        }, headers=self.authorized_header)
         data = res.get_json()
-        self.assertEqual(res.status_code,401)
+        self.assertEqual(res.status_code, 401)
         self.assertFalse(data['success'])
 
     def test_add_new_actor_with_correct_parameters(self):
-        res = self.client().post("/actors",json={
+        res = self.client().post("/actors", json={
             'name': "awad ahmed",
             'age': '23',
             'gender': 'male',
             'bio': "nothing!!!!",
             'birthdate': '1997-09-04'
-        }, headers = self.authorized_header)
+        }, headers=self.authorized_header)
         data = res.get_json()
-        self.assertEqual(res.status_code,200)
+        self.assertEqual(res.status_code, 200)
         self.assertTrue(data['success'])
-        inserted_actor = Actor.query.filter(Actor.name=='mahmoud sharshar').all()
+        inserted_actor =Actor.query.filter(Actor.name=='awad ahmed').all()
         self.assertIsNotNone(inserted_actor)
         inserted_actor[0].delete()
 
     def test_add_new_actor_with_incorrect_parameters(self):
-        res = self.client().post("/actors",json={
+        res = self.client().post("/actors", json={
             'fullname': "awad ahmed",
             'ae': '23',
             'gende': 'male',
             'biograph': "nothing!!!!",
             'birthdate': '1997-09-04'
-        }, headers = self.authorized_header)
+        }, headers=self.authorized_header)
         data = res.get_json()
-        self.assertEqual(res.status_code,401)
-        self.assertFalse(data['success'])        
+        self.assertEqual(res.status_code, 401)
+        self.assertFalse(data['success'])      
 
     def test_show_all_actors(self):
-        res = self.client().get("/actors",headers=self.authorized_header)
+        res = self.client().get("/actors", headers=self.authorized_header)
         data = res.get_json()
-        self.assertEqual(res.status_code,200)
+        self.assertEqual(res.status_code, 200)
         self.assertTrue(data['success'])
-    
+
     def test_delete_non_existing_actor(self):
-        res = self.client().delete("/actors/2000000",headers=self.authorized_header)
+        res = self.client().delete("/actors/2000000", headers=self.authorized_header)
         data = res.get_json()
-        self.assertEqual(res.status_code,401)
+        self.assertEqual(res.status_code, 401)
         self.assertFalse(data['success'])
 
 
