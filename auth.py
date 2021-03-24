@@ -10,6 +10,14 @@ from six.moves.urllib.parse import urlencode
 import os
 
 
+AUTH0_DOMAIN = os.getenv('AUTH0_DOMAIN')
+ALGORITHMS = os.getenv('ALGORITHMS')
+API_AUDIENCE = os.getenv("API_AUDIENCE")
+CLIENT_ID = os.getenv('CLIENT_ID')
+CLIENT_SECRET = os.getenv('CLIENT_SECRET')
+AUTH0_CALLBACK_URL = os.getenv('AUTH0_CALLBACK_URL')
+
+
 def setup_auth0():
     global AUTH0_DOMAIN
     global ALGORITHMS
@@ -17,6 +25,12 @@ def setup_auth0():
     global CLIENT_ID
     global CLIENT_SECRET
     global AUTH0_CALLBACK_URL
+    AUTH0_DOMAIN = os.getenv('AUTH0_DOMAIN')
+    ALGORITHMS = os.getenv('ALGORITHMS')
+    API_AUDIENCE = os.getenv("API_AUDIENCE")
+    CLIENT_ID = os.getenv('CLIENT_ID')
+    CLIENT_SECRET = os.getenv('CLIENT_SECRET')
+    AUTH0_CALLBACK_URL = os.getenv('AUTH0_CALLBACK_URL')
 
 # AuthError Exception
 
